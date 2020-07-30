@@ -15,7 +15,20 @@ const MenuSidebar = () => {
     
     return (
         <Sidebar>
-            <div className="container">
+            <div className="container-logo">
+                <img src={Logo} height="110" className="d-inline-block align-top" alt="logo" />
+                <div className="box-user-info">
+                    <h3>Usuário Teste</h3>
+                    <h4>usuario@email.com</h4>
+                </div>
+            </div>
+            <hr />
+            <div className="container-menu">
+                <Link className="nav-link" to="/auth/home">Home</Link>
+                <Link className="nav-link" to="/auth/places">Places</Link>
+                <Link className="nav-link" to="/auth/logout">Logout</Link>
+            </div>
+            {/* <div className="container">
                 <button className="navbar-toggler" type="button" onClick={openNav}>
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -42,7 +55,7 @@ const MenuSidebar = () => {
                     
                 </div>
 
-            </div>
+            </div> */}
         </Sidebar>
     );
 }

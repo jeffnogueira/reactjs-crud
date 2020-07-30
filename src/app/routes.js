@@ -3,8 +3,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { isAuthenticated } from "./shared/services/auth.service";
 import Login from './modules/not-auth/login';
 import NotFound from "./modules/not-auth/not-found";
-import Home from "./modules/auth/home";
-import Place from "./modules/auth/place";
+import Auth from "./modules/auth";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest}
@@ -22,7 +21,7 @@ const Routes = () => (
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={Login} />
-            <PrivateRoute path="/home" component={Home} />
+            <PrivateRoute path="/auth" component={Auth} />
             <Route path="*" component={NotFound} />
         </Switch>
     </BrowserRouter>

@@ -39,19 +39,59 @@ export const Nav = styled.div`
 `;
 
 export const Sidebar = styled.div`
-    background-color: #eeeeee;
+    background-color: #FFF;
+    bottom: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
     display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -ms-flex-align: center;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    padding: .5rem 1rem;
-    -ms-flex-flow: row nowrap;
-    flex-flow: row nowrap;
+    .container-logo {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;;
+        height: 30%;
+        flex-direction: column;
+    }
+    .box-user-info {
+        padding-bottom: 35px;
+    }
+    hr {
+        width: 85%;
+    }
+    .container-menu {
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+        width: 100%;
+        padding-left: 15px;
+    }
+    .nav-link {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+    .nav-link:hover {
+        color: #464343;
+    }
+    .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
 `;
 
 export const FooterContainer = styled.div`
