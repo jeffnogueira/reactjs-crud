@@ -87,6 +87,7 @@ export const Sidebar = styled.div`
         .nav-link:hover {
             color: #464343;
             background-color: #e0e0e0;
+            cursor: pointer;
         }
     }
 `;
@@ -148,6 +149,62 @@ export const Header = styled.div`
             width: 40px;
             cursor: pointer;
             margin: 5px;
+        }
+    }
+`;
+
+export const DataTable = styled.div`
+    background-color: white;
+    width: 100%;
+    height: 85%;
+    margin-bottom: 30px;
+    border-radius: 25px;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        
+        button {
+            color: #fff;
+            font-size: 16px;
+            height: 30px;
+            border: 0;
+            border-radius: 5px;
+            width: 28%;
+            margin-left: 5px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        .button-view {
+            background: #1b5bd0;
+        }
+        .button-edit {
+            background: #61dafb;
+        }
+        .button-delete {
+            background: red;
+        }
+    }
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    .not-dataSource {
+        padding-top: 30px;
+        font-weight: bold;
+        display: flex;
+
+        svg {
+            width: 1.2em;
+            height: 1.2em;
+            margin-right: 15px;
         }
     }
 `;
