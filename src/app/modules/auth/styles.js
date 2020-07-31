@@ -17,4 +17,11 @@ export const Container = styled.div`
         background-repeat: no-repeat;
         background-position: 120% 500px;
     }
+    .container-content {
+        width: 100%;
+        height: 88%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `;

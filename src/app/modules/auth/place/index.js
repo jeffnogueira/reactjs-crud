@@ -1,15 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import CardHeader from '../../../shared/components/card-header';
+import { Container } from './styles';
+import PlaceIcon from '@material-ui/icons/Place';
 
 const Home = () => (
-	<div className="App">
-		<header className="App-header">
-			<h1 className="App-title">Welcome to Place</h1>
-		</header>
-		<p className="App-intro">
-			<Link to="/home">Ir para a página home \o/</Link>
-		</p>
-	</div>
+	<Container>
+		<CardHeader icon={PlaceIcon} title="Places" />
+		<div className="card-data-table">
+
+		</div>
+		
+	</Container>
 );
 
 export default Home;

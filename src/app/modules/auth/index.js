@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from './styles';
-import Header from '../../shared/components/header';
+import NavBar from '../../shared/components/nav-bar';
 import MenuSidebar from '../../shared/components/menu-sidebar';
 import Footer from '../../shared/components/footer';
 import Routes from './routes';
@@ -13,8 +13,8 @@ const Auth = () => {
 				<MenuSidebar />
 			</div>
 			<div style={{width: '75%',height: '100%',zIndex: 1}}>
-				<Header />
-
+				<NavBar />
+					
 				<Routes />
 
 				<Footer />
