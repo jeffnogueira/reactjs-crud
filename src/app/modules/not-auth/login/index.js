@@ -20,7 +20,7 @@ const Login = () => {
 		} else {
 			api.post("/auth", { username, password }).then(res => {
 				login(res.data.access_token);
-				history.push("/home");
+				history.push("/auth");
 			}).catch(error => {
 				errorSwalService('Ops', error.data.description);
 			});

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Nav = styled.div`
     background-color: #FFF;
+    height: 6%;
     position: relative;
     display: -ms-flexbox;
     display: flex;
@@ -24,17 +25,18 @@ export const Nav = styled.div`
         color: rgba(0,0,0,.5);
         border-color: rgba(0,0,0,.1);
         cursor: pointer;
-    }
-    .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
-        display: inline-block;
-        width: 1.5em;
-        height: 1.5em;
-        vertical-align: middle;
-        content: "";
-        background: no-repeat center center;
-        background-size: 100% 100%;
-        cursor: pointer;
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+            display: inline-block;
+            width: 1.5em;
+            height: 1.5em;
+            vertical-align: middle;
+            content: "";
+            background: no-repeat center center;
+            background-size: 100% 100%;
+            cursor: pointer;
+        }
     }
 `;
 
@@ -59,9 +61,10 @@ export const Sidebar = styled.div`
         justify-content: space-between;;
         height: 30%;
         flex-direction: column;
-    }
-    .box-user-info {
-        padding-bottom: 35px;
+        
+        .box-user-info {
+            padding-bottom: 35px;
+        }
     }
     hr {
         width: 85%;
@@ -70,33 +73,89 @@ export const Sidebar = styled.div`
         height: 70%;
         display: flex;
         flex-direction: column;
-        padding-top: 50px;
+        padding: 50px 15px 0 15px;
         width: 100%;
-        padding-left: 15px;
+        
+        .nav-link {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+        .nav-link:hover {
+            color: #464343;
+            background-color: #e0e0e0;
+        }
     }
-    .nav-link {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
+`;
+
+export const Header = styled.div`
+    background-color: white;
+    width: 100%;
+    height: 15%;
+    margin-bottom: 30px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .container-title {
+        flex: 30;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        svg {
+            margin-left: 15px;
+            width: 1.5em;
+            height: 1.5em;
+        }
+        h1 {
+            padding-left: 15px;
+        }
     }
-    .nav-link:hover {
-        color: #464343;
+    .container-search {
+        flex: 50;
+        
+        input {
+            height: 46px;
+            margin-bottom: 15px;
+            padding: 0 20px;
+            color: #777;
+            font-size: 15px;
+            width: 85%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            &::placeholder {
+            color: #999;
+            }
+        }
     }
-    .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
+    .container-actions {
+        flex: 20;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        
+        button {
+            color: white;
+            font-size: 16px;
+            background: #282c34;
+            height: 40px;
+            border: 0;
+            border-radius: 100%;
+            width: 40px;
+            cursor: pointer;
+            margin: 5px;
+        }
     }
 `;
 
 export const FooterContainer = styled.div`
     background-color: #FFF;
-    position: fixed;
+    position: relative;
+    height: 6%;
     bottom: 0;
     width: 100%;
     display: flex;
