@@ -25,7 +25,7 @@ const CardDataTable = ({ config, dataSource, onView, onEdit, onDelete }) => {
                                             return (<td key={`${item.id}-${column.displayedColumn}`}>{item[column.displayedColumn]}</td>);
                                         case Column.TYPE_ACTIONS:
                                             return (<td key={`${item.id}-${column.displayedColumn}`}>
-                                                        <button className="button-view" onClick={() => onView(item.slug)}>Visualizar</button>
+                                                        <button className="button-view" onClick={() => onView(item.slug)}>Ver</button>
                                                         <button className="button-edit" onClick={() => onEdit(item.slug)}>Editar</button>
                                                         <button className="button-delete" onClick={() => onDelete(item)}>Excluir</button>
                                                     </td>);
