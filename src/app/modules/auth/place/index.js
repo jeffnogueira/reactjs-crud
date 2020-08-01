@@ -5,7 +5,7 @@ import { Container, Form } from './styles';
 import api from "../../../shared/services/api.service";
 import { successSwalService, errorSwalService, confirmSwalService } from './../../../shared/services/swal.service';
 import PlaceIcon from '@material-ui/icons/Place';
-import Column from '../../../shared/components/column';
+import Config from './config';
 import Action from '../../../shared/enums/actions.enum';
 import CloseIcon from '@material-ui/icons/Close';
 
@@ -14,7 +14,6 @@ const Place = () => {
 	const itemInitial = {id: 0, name: '', slug: '', city: '', state: ''}
 
 	const [ places, setPlaces ] = useState('');
-	const [ size, setSize ] = useState(0);
 	const [ open, setOpen ] = useState(false);
 	const [ item, setItem ] = useState(itemInitial);
 	const [ action, setAction ] = useState(0);
@@ -23,42 +22,14 @@ const Place = () => {
 	const [ city, setCity ] = useState('');
 	const [ state, setState ] = useState('');
 
-	const config = {columns: [
-		{
-			displayedColumn: 'name',
-			columnRef: 'name',
-			nameColumn: 'Nome',
-			type: Column.TYPE_COMMOM,
-			sorted: true,
-		}, {
-			displayedColumn: 'city',
-			columnRef: 'city',
-			nameColumn: 'Cidade',
-			type: Column.TYPE_COMMOM,
-			sorted: true,
-		}, {
-			displayedColumn: 'state',
-			columnRef: 'state',
-			nameColumn: 'Estado',
-			type: Column.TYPE_COMMOM,
-			sorted: true,
-		}, {
-			displayedColumn: 'actions',
-			columnRef: 'actions',
-			nameColumn: 'Ações',
-			type: Column.TYPE_ACTIONS,
-			sorted: false
-		  },
-	], size: size};
-
 	useEffect(() => {
 		onRefresh();
 	}, []);
     
     const onRefresh = () => {		
 		api.get("/api/v1.0/places").then(res => {
-			setSize(res.data.places.length);
-			setPlaces(res.data.places)
+			Config.size = res.data.places.length;
+			setPlaces(res.data.places.filter(item => item.slug));
 		}).catch(error => {
 			errorSwalService('Ops', error.data.description);
 		});
@@ -66,8 +37,8 @@ const Place = () => {
     
     const onSearch = (value = null) => {		
 		api.get(`/api/v1.0/places/search/${value}`).then(res => {
-			setSize(res.data.places.length);
-			setPlaces(res.data.places)
+			Config.size = res.data.places.length;
+			setPlaces(res.data.places.filter(item => item.slug));
 		}).catch(error => {
 			errorSwalService('Ops', error.data.description);
 		});
@@ -80,6 +51,57 @@ const Place = () => {
 		}
 		return handleOpen();
 	}
+
+	const handleOpen = () => {
+		setOpen(true);
+	};
+	
+	const handleClose = () => {
+		setItem(itemInitial);
+		setName('');
+		setSlug('');
+		setCity('');
+		setState('');
+		setOpen(false);
+	};
+
+	const getOne = (action, slug) => {
+		api.get(`/api/v1.0/places/${slug}`).then(res => {
+			const place = res.data.place;
+
+			setItem(place)
+			setName(place.name);
+			setSlug(place.slug);
+			setCity(place.city);
+			setState(place.state);
+
+			openForm(action, place);
+		}).catch(error => {
+			errorSwalService('Ops', error.data.description);
+		});
+	}
+
+    const onAdd = () => {
+		openForm(Action.NEW);
+    }
+
+    const onView = (slug) => {
+		getOne(Action.VIEW, slug);
+    }
+
+    const onEdit = (slug) => {
+		getOne(Action.EDIT, slug);
+    }
+
+    const onDelete = (item) => {
+		confirmSwalService('Deseja realmente efetuar a operação de exclusão?',
+			`Tem certeza que quer excluir o local ${item.name}?`).then(response => {
+			if (!response.dismiss) {
+				setPlaces(places.filter(obj => obj.id !== item.id));
+				successSwalService('Operação realizada com sucesso.');
+			}
+		});
+    }
 
 	const onSave = () => {
 		if (action === Action.NEW) {
@@ -132,58 +154,6 @@ const Place = () => {
 			});
 		}
 	}
-
-	const handleOpen = () => {
-		setOpen(true);
-	};
-	
-	const handleClose = () => {
-		setItem(itemInitial);
-		setName('');
-		setSlug('');
-		setCity('');
-		setState('');
-		setOpen(false);
-	};
-
-	const getOne = (action, slug) => {
-		api.get(`/api/v1.0/places/${slug}`).then(res => {
-			const place = res.data.place;
-
-			setItem(place)
-			setName(place.name);
-			setSlug(place.slug);
-			setCity(place.city);
-			setState(place.state);
-
-			openForm(action, place);
-		}).catch(error => {
-			console.log(error)
-			errorSwalService('Ops', error.data.description);
-		});
-	}
-
-    const onAdd = () => {
-		openForm(Action.NEW);
-    }
-
-    const onView = (slug) => {
-		getOne(Action.VIEW, slug);
-    }
-
-    const onEdit = (slug) => {
-		getOne(Action.EDIT, slug);
-    }
-
-    const onDelete = (item) => {
-		confirmSwalService('Deseja realmente efetuar a operação de exclusão?',
-			`Tem certeza que quer excluir o local ${item.name}?`).then(response => {
-			if (!response.dismiss) {
-				setPlaces(places.filter(obj => obj.id !== item.id));
-				successSwalService('Operação realizada com sucesso.');
-			}
-		});
-    }
 	
 	return (
 		<Container>
@@ -230,7 +200,7 @@ const Place = () => {
 				</div>
 			</div>}
 
-			<CardDataTable config={config} dataSource={places} onView={(slug) => onView(slug)} onEdit={(slug) => onEdit(slug)} 
+			<CardDataTable config={Config} dataSource={places} onView={(slug) => onView(slug)} onEdit={(slug) => onEdit(slug)} 
 				onDelete={(item) => onDelete(item)} />
 		</Container>
 	)
