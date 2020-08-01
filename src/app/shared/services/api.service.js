@@ -6,7 +6,7 @@ const api = axios.create({
     baseURL: environment.API
 });
 
-api.interceptors.request.use(async config => {
+api.interceptors.request.use(config => {
     const token = getToken();
     if (token) {
         config.headers.Authorization = `JWT ${token}`;
@@ -15,9 +15,9 @@ api.interceptors.request.use(async config => {
     return config;
 });
 
-api.interceptors.response.use(function (response) {
+api.interceptors.response.use((response) => {
     return response;
-}, function (error) {
+}, (error) => {
     return Promise.reject(error.response);
 });
 

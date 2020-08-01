@@ -3,7 +3,7 @@ import { Header } from './styles';
 import AddIcon from '@material-ui/icons/Add';
 import RefreshIcon from '@material-ui/icons/Refresh';
 
-const CardHeader = ({ icon: Icon, title, onSearch, onRefresh }) => {
+const CardHeader = ({ icon: Icon, title, onSearch, onRefresh, onAdd }) => {
     
     return (
         <Header>
@@ -16,7 +16,7 @@ const CardHeader = ({ icon: Icon, title, onSearch, onRefresh }) => {
             </div>
             <div className="container-actions">
                 <button>
-                    <AddIcon />
+                    <AddIcon onClick={() => onAdd()} />
                 </button>
                 <button>
                     <RefreshIcon onClick={() => onRefresh()} />

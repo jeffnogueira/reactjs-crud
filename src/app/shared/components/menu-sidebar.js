@@ -30,8 +30,8 @@ const MenuSidebar = () => {
             <hr />
             <div className="container-menu">
                 <Link className="nav-link" to="/auth/home"><HomeIcon /> Home</Link>
-                <Link className="nav-link" to="/auth/places"><PlaceIcon /> Places</Link>
-                <a className="nav-link" onClick={() => onLogout()}><ExitToAppIcon /> Logout</a>
+                <Link className="nav-link" to="/auth/places"><PlaceIcon /> Locais</Link>
+                <a href="#" className="nav-link" onClick={() => onLogout()}><ExitToAppIcon /> Logout</a>
             </div>
         </Sidebar>
     )
