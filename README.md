@@ -19,7 +19,9 @@ Click here to checkout live [DEMO](https://jeffnogueira-reactjs-crud.netlify.app
 ## RUN
 
 ```
-$ cd vue.js-CRUD
+$ git clone https://github.com/jeffnogueira/reactjs-crud.git
+
+$ cd reactjs-crud
 
 $ npm install
 
