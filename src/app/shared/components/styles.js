@@ -190,7 +190,7 @@ export const DataTable = styled.div`
             background: #61dafb;
         }
         .button-delete {
-            background: red;
+            background: #ff0000;
         }
     }
     tr:nth-child(even) {
