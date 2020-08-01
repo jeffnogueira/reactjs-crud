@@ -8,8 +8,8 @@ import { errorSwalService } from './../../../shared/services/swal.service';
 
 const Login = () => {
 
-	const [ username, setUsername ] = useState('');
-	const [ password, setPassword ] = useState('');
+	const [ username, setUsername ] = useState('test');
+	const [ password, setPassword ] = useState('test');
 
 	const history = useHistory();
 	
