@@ -4,8 +4,6 @@
 
 ![](https://i.imgur.com/8VH4psk.png)
 
-Click here to checkout live [DEMO](https://jeffnogueira-reactjs-crud.netlify.app/)
-
 ## Dependency
 
 |                |                             |        |
